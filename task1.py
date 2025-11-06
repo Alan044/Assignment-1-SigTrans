@@ -33,17 +33,17 @@ for i in range(len(vector1)):
 
 fig, ax  = plt.subplots()
 
-ax.plot(vector1, result1  , label = "My Signal 1")
-ax.plot(vector1, result2  , label = "My Signal 2")
+# ax.plot(vector1, result1  , label = "My Signal 1")
+# ax.plot(vector1, result2  , label = "My Signal 2")
 
-xlim = (0, 0.01)
+# xlim = (0, 0.01)
 
-ax.set_xlim(xlim)
-ax.grid(True)
+# ax.set_xlim(xlim)
+# ax.grid(True)
 
-ax.set_xlabel('t')
-ax.set_ylabel('x(t)')
-ax.legend()
-sd.play(result1, 1/dt, blocking=True)
-sd.play(result2, 1/dt, blocking=True)
-plt.show()
+# ax.set_xlabel('t')
+# ax.set_ylabel('x(t)')
+# ax.legend()
+# sd.play(result1, 1/dt, blocking=True)
+# sd.play(result2, 1/dt, blocking=True)
+# plt.show()
