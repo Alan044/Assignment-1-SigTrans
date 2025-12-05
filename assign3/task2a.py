@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy as sci
 import sounddevice as sd
-fs2 = 2000 
+fs2 = 2000
 Ts = 1/fs2
 def x(t): 
     return np.cos(2000*np.pi*t)

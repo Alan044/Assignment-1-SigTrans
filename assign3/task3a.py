@@ -8,4 +8,4 @@ x = sd.rec(int(K), fs, channels=1, blocking=True)
 x = x[::5]
 print(x.shape)
 
-sd.play(x, fs, blocking=True)
+sd.play(x, fs/5, blocking=True)

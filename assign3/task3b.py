@@ -18,7 +18,7 @@ x = sd.rec(K, samplerate=fs, channels=1, blocking=True).flatten()
 # ----------------------------
 N = 4
 fc = 3400                      # Hz
-wn = 2*np.pi*fc                # rad/s (because analog=True)
+wn = fc                # rad/s (because analog=True)
 
 z, p, k = signal.butter(N, wn, analog=True, output='zpk')
 H = signal.ZerosPolesGain(z, p, k)
@@ -26,16 +26,26 @@ H = signal.ZerosPolesGain(z, p, k)
 # ----------------------------
 # Step 3: Bode plot verification
 # ----------------------------
-w, mag_db, phase = signal.bode(H, n=2000)
+w, mag_db, phase = signal.bode(H, n=1000)
 freq = w / (2*np.pi)
+gain = 10**(mag_db/20)
+rad = phase * (np.pi/180)
 
-fig, ax = plt.subplots()
-ax.plot(freq, mag_db)
-ax.set_xlim(1000, 10000)
-ax.set_xlabel("Frequency (Hz)")
-ax.set_ylabel("Magnitude (dB)")
-ax.set_title("4th-order Butterworth Lowpass, fc = 3.4 kHz")
-ax.grid(which='both')
+fig, ax = plt.subplots(2,1)
+ax[0].plot(freq, gain)
+ax[1].plot(freq, rad)
+ax[0].set_xlim(1000, 10000)
+ax[0].set_xlabel("Frequency (Hz)")
+ax[0].set_ylabel("Gain")
+ax[0].set_title("4th-order Butterworth Lowpass, fc = 3.4 kHz")
+
+ax[1].set_xlim(1000, 10000)
+ax[1].set_xlabel("Frequency (Hz)")
+ax[1].set_ylabel("Rad")
+
+ax[0].grid(True)
+ax[1].grid(True)
+fig.tight_layout(pad = 0.5)
 plt.show()
 
 # ----------------------------
